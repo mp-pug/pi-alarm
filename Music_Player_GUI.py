@@ -438,11 +438,11 @@ class Music_Player_Frames:
             
     def raise_button_playlist_view(self,master):
         # Create panels for control and channel buttons
-        row_n= 4
-        column_n = 4
+        row_n= 3
+        column_n = 7
         frame_n= row_n*column_n
-        btn_height=10;
-        btn_width=15;
+        btn_height=8;
+        btn_width=10;
 
         frame_max=((self.Music_Player.count()-self.Music_Player.count()%(frame_n))/(frame_n))+1
         self.channel_frames_max=frame_max
@@ -460,18 +460,18 @@ class Music_Player_Frames:
                 for j in range(0,r_max):
                     if j==r_max-1:
                         for k in range(0,(self.Music_Player.count()%frame_n)%column_n):
-                            self.ch_btns[i*frame_n+j*row_n+k]=Button(self.channel_frames[i],text=labels[i*frame_n+j*row_n+k],command=lambda l=(i*frame_n+j*row_n+k):self.play_button_song(l),height=btn_height,width=btn_width )
-                            self.ch_btns[i*frame_n+j*row_n+k].grid(row=j,column=k,sticky="nsew")
+                            self.ch_btns[i*frame_n+j*column_n+k]=Button(self.channel_frames[i],text=labels[i*frame_n+j*column_n+k],command=lambda l=(i*frame_n+j*column_n+k):self.play_button_song(l),height=btn_height,width=btn_width )
+                            self.ch_btns[i*frame_n+j*column_n+k].grid(row=j,column=k,sticky="nsew")
                     else:
                         for k in range(0,column_n):
-                            self.ch_btns[i*frame_n+j*row_n+k]=Button(self.channel_frames[i],text=labels[i*frame_n+j*row_n+k],command=lambda l=(i*frame_n+j*row_n+k):self.play_button_song(l),height=btn_height,width=btn_width )
-                            self.ch_btns[i*frame_n+j*row_n+k].grid(row=j,column=k,sticky="nsew")
+                            self.ch_btns[i*frame_n+j*column_n+k]=Button(self.channel_frames[i],text=labels[i*frame_n+j*column_n+k],command=lambda l=(i*frame_n+j*column_n+k):self.play_button_song(l),height=btn_height,width=btn_width )
+                            self.ch_btns[i*frame_n+j*column_n+k].grid(row=j,column=k,sticky="nsew")
 
             else:
                 for j in range(0,row_n):    
                     for k in range(0,column_n):
-                        self.ch_btns[i*frame_n+j*row_n+k]=Button(self.channel_frames[i],text=labels[i*frame_n+j*row_n+k],command=lambda l=(i*frame_n+j*row_n+k):self.play_button_song(l),height=btn_height,width=btn_width )
-                        self.ch_btns[i*frame_n+j*row_n+k].grid(row=j,column=k,sticky="nsew")
+                        self.ch_btns[i*frame_n+j*column_n+k]=Button(self.channel_frames[i],text=labels[i*frame_n+j*column_n+k],command=lambda l=(i*frame_n+j*column_n+k):self.play_button_song(l),height=btn_height,width=btn_width )
+                        self.ch_btns[i*frame_n+j*column_n+k].grid(row=j,column=k,sticky="nsew")
 
         self.channel_frames[0].tkraise()
         self.refresh_title_label()
@@ -611,11 +611,11 @@ class Music_Player_Frames:
         
     def create_radio_channel_buttons(self):
         # Create panels for control and channel buttons
-        row_n= 4
-        column_n = 4
+        row_n= 3
+        column_n = 7
         frame_n= row_n*column_n
-        btn_height=10;
-        btn_width=15;
+        btn_height=8;
+        btn_width=10;
 
         self.radio_frame_max=((self.ch_df.shape[0]-self.ch_df.shape[0]%(frame_n))/(frame_n))+1
         self.radio_channel_frames = self.radio_frame_max*[None]
@@ -631,17 +631,17 @@ class Music_Player_Frames:
                 for j in range(0,r_max):
                     if j==r_max-1:
                         for k in range(0,(self.ch_df.shape[0]%frame_n)%column_n):
-                            self.radio_ch_btns[i*frame_n+j*row_n+k]=Button(self.radio_channel_frames[i],text=self.create_radio_button_label(self.ch_df.Channel[i*frame_n+j*row_n+k]),command=lambda l=(i*frame_n+j*row_n+k):self.play_radio_channel(l),height=btn_height,width=btn_width )
-                            self.ch_btns[i*frame_n+j*row_n+k].grid(row=j,column=k,sticky="nsew")
+                            self.radio_ch_btns[i*frame_n+j*column_n+k]=Button(self.radio_channel_frames[i],text=self.create_radio_button_label(self.ch_df.Channel[i*frame_n+j*column_n+k]),command=lambda l=(i*frame_n+j*column_n+k):self.play_radio_channel(l),height=btn_height,width=btn_width )
+                            self.radio_ch_btns[i*frame_n+j*column_n+k].grid(row=j,column=k,sticky="nsew")
                     else:
                         for k in range(0,column_n):
-                            self.radio_ch_btns[i*frame_n+j*row_n+k]=Button(self.radio_channel_frames[i],text=self.create_radio_button_label(self.ch_df.Channel[i*frame_n+j*row_n+k]),command=lambda l=(i*frame_n+j*row_n+k):self.play_radio_channel(l),height=btn_height,width=btn_width )
-                            self.radio_ch_btns[i*frame_n+j*row_n+k].grid(row=j,column=k,sticky="nsew")
+                            self.radio_ch_btns[i*frame_n+j*column_n+k]=Button(self.radio_channel_frames[i],text=self.create_radio_button_label(self.ch_df.Channel[i*frame_n+j*column_n+k]),command=lambda l=(i*frame_n+j*column_n+k):self.play_radio_channel(l),height=btn_height,width=btn_width )
+                            self.radio_ch_btns[i*frame_n+j*column_n+k].grid(row=j,column=k,sticky="nsew")
             else:
                 for j in range(0,row_n):    
                     for k in range(0,column_n):
-                        self.radio_ch_btns[i*frame_n+j*row_n+k]=Button(self.radio_channel_frames[i],text=self.create_radio_button_label(self.ch_df.Channel[i*frame_n+j*row_n+k]),command=lambda l=(i*frame_n+j*row_n+k):self.play_radio_channel(l),height=btn_height,width=btn_width )
-                        self.radio_ch_btns[i*frame_n+j*row_n+k].grid(row=j,column=k,sticky="nsew")
+                        self.radio_ch_btns[i*frame_n+j*column_n+k]=Button(self.radio_channel_frames[i],text=self.create_radio_button_label(self.ch_df.Channel[i*frame_n+j*column_n+k]),command=lambda l=(i*frame_n+j*column_n+k):self.play_radio_channel(l),height=btn_height,width=btn_width )
+                        self.radio_ch_btns[i*frame_n+j*column_n+k].grid(row=j,column=k,sticky="nsew")
         
         # raise the first channel frame 
         self.radio_channel_frames[0].tkraise()

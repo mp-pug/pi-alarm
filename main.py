@@ -34,7 +34,7 @@ alarms=pd.read_csv(alarm_file)
 
 
 
-media_root_directory="/mnt/nas/Audio/Music"
+media_root_directory="/"
 terminate_flag=False
 
 music_player=Music_Player.Music_Player()
@@ -61,9 +61,6 @@ status_frame.grid(row=0,column=0,sticky="nsew")
 category_frame=Frame(status_frame)
 category_frame.pack(side=LEFT)
 
-
-search_cat=Button(category_frame,text="Suche",command=search_frames.raise_frames)
-search_cat.grid(row=0,column=0)
 
 alarm_clock_cat=Button(category_frame,text="Wecker",command=alarm_clock_frames.raise_frames)
 alarm_clock_cat.grid(row=0,column=2)
