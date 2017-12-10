@@ -10,7 +10,6 @@ import Music_Player
 import Alarm_Clock
 import Alarm_Clock_GUI
 import Music_Player_GUI
-import Search_Frame as searchframe
 
 
   
@@ -44,14 +43,15 @@ alarm_clock=Alarm_Clock.Alarm_Clock(music_player,alarms)
 
 # Create the GUI
 root=Tk()
-
-search_frames=searchframe.Search_Frame(root,media_root_directory,channel_csv_file)
+root.resizable(width=False, height=False)
+root.geometry('{}x{}'.format(800,480))
 
 alarm_clock_frames=Alarm_Clock_GUI.Alarm_Clock_Frames(root,alarm_clock)
 
 # Create Music Player Frames
 music_player_frames=Music_Player_GUI.Music_Player_Frames(root,music_player,media_root_directory,ch_df)
 
+root.grid_columnconfigure(0,weight=1)
 
 # Create Date Label and menu
 status_frame=Frame(root)
@@ -65,8 +65,6 @@ category_frame.pack(side=LEFT)
 alarm_clock_cat=Button(category_frame,text="Wecker",command=alarm_clock_frames.raise_frames)
 alarm_clock_cat.grid(row=0,column=2)
 
-music_player_cat=Button(category_frame,text="Mediathek",command=music_player_frames.raise_player_frames)
-music_player_cat.grid(row=0,column=3)
 
 radio_cat=Button(category_frame,text="Radio",command=music_player_frames.raise_radio_frames)
 radio_cat.grid(row=0,column=4)
@@ -79,6 +77,7 @@ time_label.pack(side=RIGHT)
 
 
 music_player_frames.raise_radio_frames()
+
 try:
     t=Thread(target=update_time,args=(time_label,date_label,alarm_clock_frames,))
     t.daemon=True
@@ -88,5 +87,4 @@ except (KeyboardInterrupt,SystemExit):
         sys.exit()
 
 root.mainloop()
-music_player_frames.export_media_list("current_playlist.m3u")
-
+alarms.to_csv(alarm_file,header='column_names',index=False)

@@ -18,27 +18,9 @@ class Alarm_Clock:
             for i in range(self.alarms.shape[0]):
                 time_str=str(self.alarms.time_h[i])+":"+str(self.alarms.time_min[i])+":00:"+time.strftime("%d:%m:%Y")
                 tt = time.mktime(datetime.datetime.strptime(time_str, "%H:%M:%S:%d:%m:%Y").timetuple())
-                if round(time.time(),0)==tt:
-                    if self.alarm.iloc[i]['sun']==1 and time.strftime("%w")=="0":
-                        self.ring_alarm(i)
-                    
-                    if self.alarm.iloc[i]['mon']==1 and time.strftime("%w")=="1":
-                        self.ring_alarm(i)
-                    
-                    if self.alarm.iloc[i]['tue']==1 and time.strftime("%w")=="2":
-                        self.ring_alarm(i)
-                    
-                    if self.alarm.iloc[i]['wed']==1 and time.strftime("%w")=="3":
-                        self.ring_alarm(i)
-
-                    if self.alarm.iloc[i]['thu']==1 and time.strftime("%w")=="4":
-                        self.ring_alarm(i)
-                    
-                    if self.alarm.iloc[i]['fri']==1 and time.strftime("%w")=="5":
-                        self.ring_alarm(i)
-
-                    if self.alarm.iloc[i]['sat']==1 and time.strftime("%w")=="6":
-                        self.ring_alarm(i)
+		if round(time.time(),0)==tt:
+			if self.alarms.iloc[0]['status']==1:
+                        	self.ring_alarm(i)
             time.sleep(1)
    
 

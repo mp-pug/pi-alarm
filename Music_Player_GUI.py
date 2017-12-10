@@ -626,23 +626,27 @@ class Music_Player_Frames:
         for i in range(0,self.radio_frame_max):
             self.radio_channel_frames[i]=Frame(self.master)
             self.radio_channel_frames[i].grid(row=1,column=0,sticky="nsew")
+ 		
             if i==self.radio_frame_max-1:
                 r_max=(((self.ch_df.shape[0]%frame_n)-((self.ch_df.shape[0]%frame_n)%column_n))/column_n)+1 
                 for j in range(0,r_max):
                     if j==r_max-1:
                         for k in range(0,(self.ch_df.shape[0]%frame_n)%column_n):
                             self.radio_ch_btns[i*frame_n+j*column_n+k]=Button(self.radio_channel_frames[i],text=self.create_radio_button_label(self.ch_df.Channel[i*frame_n+j*column_n+k]),command=lambda l=(i*frame_n+j*column_n+k):self.play_radio_channel(l),height=btn_height,width=btn_width )
-                            self.radio_ch_btns[i*frame_n+j*column_n+k].grid(row=j,column=k,sticky="nsew")
+                            self.radio_ch_btns[i*frame_n+j*column_n+k].grid(row=j,column=k,sticky="NSEW")
                     else:
                         for k in range(0,column_n):
                             self.radio_ch_btns[i*frame_n+j*column_n+k]=Button(self.radio_channel_frames[i],text=self.create_radio_button_label(self.ch_df.Channel[i*frame_n+j*column_n+k]),command=lambda l=(i*frame_n+j*column_n+k):self.play_radio_channel(l),height=btn_height,width=btn_width )
-                            self.radio_ch_btns[i*frame_n+j*column_n+k].grid(row=j,column=k,sticky="nsew")
+                            self.radio_ch_btns[i*frame_n+j*column_n+k].grid(row=j,column=k,sticky="NSEW")
             else:
                 for j in range(0,row_n):    
                     for k in range(0,column_n):
                         self.radio_ch_btns[i*frame_n+j*column_n+k]=Button(self.radio_channel_frames[i],text=self.create_radio_button_label(self.ch_df.Channel[i*frame_n+j*column_n+k]),command=lambda l=(i*frame_n+j*column_n+k):self.play_radio_channel(l),height=btn_height,width=btn_width )
-                        self.radio_ch_btns[i*frame_n+j*column_n+k].grid(row=j,column=k,sticky="nsew")
-        
+                        self.radio_ch_btns[i*frame_n+j*column_n+k].grid(row=j,column=k,sticky="NSEW")
+       		
+        for i in range(0,self.radio_frame_max):
+		for j in range(0,column_n):
+			self.radio_channel_frames[i].grid_columnconfigure(j,weight=1)
         # raise the first channel frame 
         self.radio_channel_frames[0].tkraise()
 
@@ -705,6 +709,6 @@ class Music_Player_Frames:
     def stop_radio_channel(self):
         self.Music_Player.stop_radio()
         self.radio_ch_btns[self.channel_index[0]].configure(fg='Black')
-        self.radio_btns[self.channel_index[1]].configure(fg='Black')
+        self.radio_ch_btns[self.channel_index[1]].configure(fg='Black')
         self.title_label.config(text="Pi Alarm Music Player")
         self.time_label.config(text="00:00/00:00")

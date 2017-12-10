@@ -1,5 +1,2 @@
-time_h,time_min,alarm_type,description,media,sun,mon,tue,wed,thu,fri,sat
-13,00,1,Hypocrisy,/mnt/nas/Audio/Music/Hypocrisy/The Arrival/Hypocrisy - Eraser.mp3,1,1,1,1,1,1,1
-12,02,0,Rock Antenne,http://www.rockantenne.de/webradio/rockantenne.m3u,0,1,1,1,1,1,0
-11,37,1,Test MP3,/mnt/nas/Audio/Music/Hypocrisy/The Arrival/Hypocrisy - Eraser.mp3,1,1,1,1,1,1,1
-12,20,0,Test Radio,http://www.rockantenne.de/webradio/rockantenne.m3u,0,1,1,1,1,1,0
+time_h,time_min,alarm_type,description,media,status
+19,20,0,Rock Antenne,http://www.rockantenne.de/webradio/rockantenne.m3u,1
